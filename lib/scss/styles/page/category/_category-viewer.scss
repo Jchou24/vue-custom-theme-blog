@@ -1,0 +1,238 @@
+@mixin category-card-xs( $background ){
+    background: $background;
+    margin-bottom: 10px;
+    border-radius: 7px;
+    padding: 5px;
+    padding-top: 0px;
+}
+
+@mixin category-viewer() {
+    $background: #ffffff8a;
+    // =================================================================================
+    // category-viewer-filter
+    // =================================================================================
+    div.category-filter{ 
+        header h3 {
+            position: relative;
+            top: 4px;
+        }
+    }
+
+    // =================================================================================
+    // category-viewer
+    // =================================================================================
+    div.category-viewer{
+        background: $background;
+        border-radius: $card-border-radius;
+        padding: $card-border-radius;
+        font-size: 24px;
+
+        i.material-icons{
+            font-size: 32px;
+            position: relative;
+            top: 5px;
+            
+            &.arrow{
+                @include transition(all, 0.3s);
+                transform: rotate(-90deg);
+                &.down{
+                    transform: rotate(0deg);
+                }
+            }
+
+            &.folder{
+                color: $folder_icon_color;
+            }
+        }
+
+        svg.file-icon{
+            fill: $article_icon_color;
+            width: 26px;
+            height: 26px;
+            position: relative;
+            top: -3px;
+            margin-left: 3px;
+            margin-right: 3px;
+        }
+
+        span.category-folder-raw{
+            cursor: pointer;
+            span.category-folder-raw-body{
+                position: relative;
+                left: -2px;
+
+                @include transition(all, 0.15s);
+                &:hover{
+                    @include text-shadow-1(1px, $tags-color-badge);
+                }
+            }            
+        }
+
+        @media (max-width: $mediaquery-width-sm) { 
+            font-size: 22px;
+            margin-right: 0px;
+            border-radius: 10px;
+            padding: 0px;
+            padding-top: 10px;
+            background: none;
+
+            i.material-icons{
+                font-size: 22px;
+                top: 2px;
+                &.arrow{
+                    display: none;
+                }
+            }
+
+            svg.file-icon{
+                width: 18px;
+                height: 18px;
+                margin-left: 0px;
+                margin-right: 0px;
+            }
+
+            div.category-file-title{
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+        }
+    }
+
+    // =================================================================================
+    // category-folder-viewer
+    // =================================================================================
+    div.category-folder-viewer{
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-bottom: 3px;
+        
+        ul{
+            margin-bottom: 0px;
+        }
+
+        span.tags{
+            justify-content: flex-start !important;
+            position: relative;
+            margin-left: 72px;
+            top: 1px;
+            line-height: 18px;
+
+            svg-icon.tag{
+                display: none;
+            }
+
+            span.tag-item{
+                text-shadow: none;
+            }
+        }
+
+        @media (max-width: $mediaquery-width-sm) {
+            @include category-card-xs(#eff7f97d);
+            @include box-shadow-1( 8px, #d0d8e0 );
+            span.tags{
+                margin-left: 22px;
+            }
+        }
+    }
+
+    // =================================================================================
+    // file-viewer
+    // =================================================================================
+    div.category-file-viewer{
+        position: relative;
+        width: calc( 100% - 36px );
+        white-space: initial;
+
+        left: 36px;
+
+        @include transition(all, 0.15s);
+        div.category-file-title a{
+            color: #212529;
+            @include transition(all, 0.15s);
+            &:hover{
+                text-decoration: none;
+                @include text-shadow-1(1px, $tags-color-badge);
+            }
+        }
+
+        div.category-file-metainfo{
+            position: relative;
+            left: 36px;
+            width: calc( 100% - 36px );
+            display: flex;
+            flex-wrap: wrap;
+
+            span.date{
+                font-size: 18px;
+                margin-right: 7px;
+                color: #727986;
+                line-height: 18px;
+
+                i.material-icons{
+                    font-size: 24px;
+                    color: #939daf;
+                    text-shadow: none;
+                }
+
+                & > span{
+                    text-shadow: none;
+                }
+            }
+
+            span.tags{
+                justify-content: flex-start !important;
+                position: relative;
+                top: 3px !important;
+                margin-left: 0px !important;
+    
+                svg-icon.tag{
+                    display: none;
+                }
+
+                span.tag-item{
+                    text-shadow: none;
+                }
+            }
+        }
+
+        @media (max-width: $mediaquery-width-sm) {
+            @include category-card-xs($background);
+            padding-bottom: 8px;
+
+
+            left: 0px;
+            width: 100%;
+
+            div.category-file-metainfo{
+                left: 36px;
+                width: calc( 100% - 36px );
+    
+                span.date{
+                    font-size: 15px;
+
+                    i.material-icons{
+                        font-size: 21px;
+                        top: 4px;
+                    }
+                }
+            }
+
+            div.category-file-metainfo{
+                left: 22px;
+                width: calc( 100% - 22px );
+                span.date{
+                    margin-left: 4px;
+                    margin-right: 4px;
+                }
+                span.tags{
+                    width: 100%;
+                }
+            }
+        }
+    }    
+}
+
+

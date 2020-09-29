@@ -1,0 +1,11 @@
+@mixin footer() {
+    footer nav{
+        background-color: $color-border-heavy;
+        &:nth-child(1) {
+            background-color: #123456;
+        }
+    
+        &:nth-child(2) {
+        }
+    }    
+}

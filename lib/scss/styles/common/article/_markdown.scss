@@ -1,0 +1,49 @@
+@mixin markdown() {
+    .markdown-body table {
+        overflow: initial !important;
+    }
+    
+    pre{
+        border-radius: 8px !important;
+        position: relative;
+        overflow: hidden;
+
+        &:not([class*="language-"]){
+            background-color: #bfccdc4f;
+        }
+
+        div.ps__rail-x,
+        div.ps__thumb-x{
+            display: none;
+        }
+    }
+
+    mark{
+        background-color: #ffe459;
+        border-radius: 5px;
+    }
+
+    .markdown-body .task-list-item input{
+        margin-left: -1.3em;
+        margin-right: 0.6em;
+    }
+
+    .markdown-body p{
+        margin-bottom: 4px;
+    }
+
+    .markdown-body li{
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+
+    .markdown-body li>p{
+        margin-top: 4px;
+    }
+
+    @media (max-width: $mediaquery-width-sm) { 
+        .markdown-body ol, .markdown-body ul{
+            padding-left: 1.5em;
+        }
+    }
+}

@@ -1,0 +1,256 @@
+
+
+
+
+
+@mixin _layout( $margin, $padding-content, $width-content, $width-sidebar-icons, $width-sidebar, $is-xs-display-sidebar-icons, $display-batch-icons-in-xl: false ) {
+        
+    $height-content: calc( 100vh - #{$header_nav-height} );
+
+    div.content:not(.default){
+        display: flex;
+
+        div.main-content{
+            $border-width: 3px;
+            // height: 100%;
+            width: 100%;
+          
+            margin-top: calc( #{$header_nav-height} + #{$margin} * 2 );
+            margin-bottom: calc( #{$margin} * 2 );
+            @media (max-width: $mediaquery-width-sm) { 
+                margin-left: 0;
+                margin-right: 0;
+                max-width: calc( 100vw - ( #{$margin} * 2 ) );
+                margin-top: 0;
+            }
+            
+            // Small devices (landscape phones, 576px and up)
+            @media (min-width: $mediaquery-width-sm) and (max-width: $mediaquery-width-md) { 
+                margin-left: calc( #{$width-sidebar} + #{$margin} * 4 );
+                margin-right: calc( #{$margin} * 2 );
+                max-width: calc( ( 100vw - 10px ) - ( #{$width-sidebar} + #{$margin} * 4 ) - ( #{$margin} * 2 ) );
+            }
+            
+            // Medium devices (tablets, 768px and up)
+            @media (min-width: $mediaquery-width-md) and (max-width: $mediaquery-width-l) { 
+                margin-left: calc( #{$width-sidebar} + #{$margin} * 4 );
+                margin-right: calc( #{$margin} * 2 );
+                max-width: calc( ( 100vw - 10px ) - ( #{$width-sidebar} + #{$margin} * 4 ) - ( #{$margin} * 2 ) );
+            }
+            
+            // Large devices (desktops, 992px and up)
+            @media (min-width: $mediaquery-width-l) and (max-width: $mediaquery-width-xl) { 
+                margin-left: calc( #{$width-sidebar} + #{$margin} * 2 );
+                margin-right: 0;
+                max-width: calc( ( 100vw - 30px ) - ( #{$width-sidebar} + #{$margin} * 2 ) );
+            }
+            
+            // Extra large devices (large desktops, 1200px and up)
+            @media (min-width: $mediaquery-width-xl) { 
+                margin-left: calc( #{$width-sidebar} + #{$margin} * 2 );
+                margin-right: 0;
+                max-width: calc( ( #{$mediaquery-width-xl} - 20px ) - ( #{$width-sidebar} + #{$margin} * 2 ) );
+            }
+
+            @include transition(all, 0.3s, ease);
+
+            &.sidebar_disactive{
+                margin-left: calc( #{$margin} * 2 );
+                max-width: calc( 100vw - ( #{$margin} * 2 ) * 2 - #{$border-width} * 2 );
+                @media (max-width: $mediaquery-width-sm) { 
+                    max-width: 100vw;
+                }
+                
+                // Large devices (desktops, 992px and up)
+                @media (min-width: $mediaquery-width-l) and (max-width: $mediaquery-width-xl) { 
+                    margin-left: 0;
+                }
+                
+                // Extra large devices (large desktops, 1200px and up)
+                @media (min-width: $mediaquery-width-xl) { 
+                    margin-left: 0;
+                    max-width: calc( #{$mediaquery-width-xl} - ( #{$margin} * 2 ) * 2 );
+                }
+            }
+
+            &.full-page{
+                @media (min-width: $mediaquery-width-sm) { 
+                    margin: 0;
+                    max-width: 100%;
+                }
+            }
+        }        
+
+        @media (max-width: $mediaquery-width-sm) {
+            @include main-content-xs($margin);
+        }
+
+        @media (min-width: $mediaquery-width-sm) and (max-width: $mediaquery-width-xl) { 
+            @include main-content-l($margin, $width-sidebar);
+        }
+
+        @media (min-width: $mediaquery-width-xl) { 
+            @include main-content-xl($margin, $width-sidebar);
+
+            &.disactive-displayer{
+                // width: $width-content;
+                // transition: width 0.3s ease;
+                @include transition(width, 0.3s);
+            }
+
+            &.active-displayer{
+                width: 100%;
+                // transition: width 0.3s ease;
+                @include transition(width, 0.3s);
+            }
+        }
+    }
+
+    div.sidebar-content{
+        margin-top: calc( #{$header_nav-height} + #{$margin} );
+        position: fixed;
+        top: 0px;
+        z-index: 9990;
+        // set sidebar view-container width to "0px" to avoid covering entire screen
+        width: 0px;
+        @include transition(width, 0.3s);
+        @media (max-width: $mediaquery-width-sm) { 
+            &.active-display{
+                width: 100%;
+            }
+        }
+        height: 100%;
+        perspective: 1500px; 
+
+        div.sidebar{
+            height: calc( 100vh - #{$header_nav-height} - 2 * #{$padding-content} );
+            width: $width-sidebar;
+        }
+
+        @media (max-width: $mediaquery-width-sm) { 
+            @include sidebar-xs( $margin, $width-sidebar, $is-xs-display-sidebar-icons ); 
+        }
+
+        @media (min-width: $mediaquery-width-sm) and (max-width: $mediaquery-width-xl) { 
+            @include sidebar-l( $margin, $width-sidebar, $is-xs-display-sidebar-icons ); 
+        }
+
+        @media (min-width: $mediaquery-width-xl) { 
+            @include sidebar-xl( $margin, $width-sidebar-icons, $width-sidebar, $display-batch-icons-in-xl, true, $is-xs-display-sidebar-icons ); 
+        }
+    } 
+}
+
+// =================================================================================
+// main media query
+// =================================================================================
+
+@mixin layout($display-batch-icons-in-xl: false, $is-xs-display-sidebar-icons: true) {
+    // Extra small devices (portrait phones, less than 576px)
+    @media (max-width: $mediaquery-width-sm) { 
+        @include _layout(
+            $margin: 0px,
+            $padding-content: 0px,
+            $width-content: 100vw,
+            $width-sidebar-icons: 50px,
+            $width-sidebar: 100%,
+            $is-xs-display-sidebar-icons: $is-xs-display-sidebar-icons
+        );    
+    }
+
+    // Small devices (landscape phones, 576px and up)
+    @media (min-width: $mediaquery-width-sm) and (max-width: $mediaquery-width-md) { 
+        @include _layout(
+            $margin: 5px,
+            $padding-content: 5px,
+            $width-content: 100%,
+            $width-sidebar-icons: 50px,
+            $width-sidebar: 240px,
+            $is-xs-display-sidebar-icons: $is-xs-display-sidebar-icons
+        );
+    }
+
+    // Medium devices (tablets, 768px and up)
+    @media (min-width: $mediaquery-width-md) and (max-width: $mediaquery-width-l) { 
+        @include _layout(
+            $margin: 5px,
+            $padding-content: 5px,
+            $width-content: 100%,
+            $width-sidebar-icons: 50px,
+            $width-sidebar: 240px,
+            $is-xs-display-sidebar-icons: $is-xs-display-sidebar-icons
+        );
+    }
+
+    // Large devices (desktops, 992px and up)
+    @media (min-width: $mediaquery-width-l) and (max-width: $mediaquery-width-xl) { 
+        @include _layout(
+            $margin: 5px,
+            $padding-content: 5px,
+            $width-content: 100%,
+            $width-sidebar-icons: 50px,
+            $width-sidebar: 270px,
+            $is-xs-display-sidebar-icons: $is-xs-display-sidebar-icons
+        );
+    }
+
+    // Extra large devices (large desktops, 1200px and up)
+    @media (min-width: $mediaquery-width-xl) { 
+        @include _layout(
+            $margin: 5px,
+            $padding-content: 5px,
+            $width-content: 1200px,
+            $width-sidebar-icons: 50px,
+            $width-sidebar: 270px,
+            $is-xs-display-sidebar-icons: $is-xs-display-sidebar-icons,
+            $display-batch-icons-in-xl: $display-batch-icons-in-xl
+        );
+    }
+
+    // =================================================================================
+    // .view-container
+    // =================================================================================
+
+    .view-container{
+        margin-left: 0px;
+        margin-right: 0px;
+
+        @media (min-width: $mediaquery-width-l) and (max-width: $mediaquery-width-xl) { 
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        @media (min-width: $mediaquery-width-xl) { 
+            width: calc( #{$mediaquery-width-xl} - 20px );
+            margin: 0 auto;
+        }
+
+        &.full-page{
+            margin-left: 0px;
+            margin-right: 0px;
+            width: 100vw;
+            height: 100vh;
+        }
+    }
+
+    .sidebar-content{
+        .view-container{
+            @media (min-width: $mediaquery-width-xl) { 
+                // set sidebar view-container width to "0px" to avoid covering entire screen
+                width: 0px;
+                margin-left: calc( ( 100vw - ( #{$mediaquery-width-xl} - 20px ) ) / 2 - 4px );
+            }
+        }
+    }
+
+    .theme-container.tag,
+    .theme-container.category{
+        .sidebar-content{
+            .view-container{
+                @media (min-width: $mediaquery-width-xl) {
+                    margin-left: calc( ( 100vw - ( #{$mediaquery-width-xl} - 20px ) ) / 2 ) !important;
+                }
+            }
+        }
+    }
+}

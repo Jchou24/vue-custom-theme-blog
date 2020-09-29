@@ -1,0 +1,19 @@
+@import "styles/global-var";
+@import "styles/theme-setting";
+
+@import "styles/common/sidebar/_sidebar";
+@import "styles/common/layout/_layout";
+@import "styles/common/layout/_main-content";
+
+.theme-container.search{
+    @include layout($display-batch-icons-in-xl: false, $is-xs-display-sidebar-icons: false);
+
+}
+
+div.main-content.search{
+    @media (max-width: $mediaquery-width-sm) { 
+        div.hidden-nav-header{
+            height: $header_nav_hidden-height !important;
+        }
+    }
+} 

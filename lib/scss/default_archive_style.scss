@@ -1,0 +1,21 @@
+@import "styles/global-var";
+@import "styles/theme-setting";
+
+@import "styles/common/sidebar/_sidebar";
+@import "styles/common/layout/_layout";
+@import "styles/common/layout/_main-content";
+
+.theme-container.archive{
+
+    @include layout($display-batch-icons-in-xl: false, $is-xs-display-sidebar-icons: false);
+
+    div.main-content{    
+        @include main-content-no-background();
+    }
+    
+    @media (max-width: $mediaquery-width-sm) { 
+        aside.sidebar-icons{
+            display: none !important;
+        }
+    }
+}

@@ -1,0 +1,38 @@
+// index.styl
+.theorem
+  margin 1rem 0
+  padding .1rem 1.5rem
+  padding-top: 12px;
+  border-radius 0.4rem
+  background-color #d7e3ef
+  .title
+    font-weight bold
+
+.custom-block
+  &.right
+    color transparentify($textColor, 0.4)
+    font-size 0.9rem
+    text-align right
+
+pre.vue-container
+  border-left-width: .5rem;
+  border-left-style: solid;
+  border-color: #8cacd4;
+  border-radius: 0px;
+  background-color: #2b2b2b;
+  color: whitesmoke;
+  
+  & > code
+    font-size: 14px !important;
+    & > p
+      margin: -5px 0 -20px 0;
+      line-height: 24px;
+    code      
+      padding: 3px 5px;
+      border-radius: 3px;
+      background-color: #afd1fb;
+      color #1c2f45
+    em
+      color #808080
+      font-weight light
+

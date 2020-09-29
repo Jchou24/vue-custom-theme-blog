@@ -1,0 +1,179 @@
+@mixin article-meta-list() {
+    
+    div.article{            
+        
+
+        div.article-meta{
+            margin-top: 10px;
+            margin-bottom: 30px;
+            @media (max-width: $mediaquery-width-sm) {
+                margin: 10px;
+                margin-bottom: 18px;
+            }
+            padding-bottom: 20px;
+            padding-top: 15px;
+            border-radius: $card-border-radius;
+            background: $article_header-background;
+            // add to make sorting animation
+            // but will cause list animation lag
+            // @include transition();
+            @include article-meta-box-shadow( #a1aebd, rgba(128, 128, 153, 0.35) );
+            div.article-meta-wordcloud.active {
+                background-color: #8da2bb20;
+                @include box-shadow-inset-1( $hover-width: 18px, $color-hover: #8da2bb20 );
+            }
+
+            &.style-1{
+                @include article-meta-box-shadow( #a1aebd, rgba(128, 128, 153, 0.35) );
+                div.article-meta-wordcloud.active {
+                    background-color: #81a3ca20;
+                    @include box-shadow-inset-1( $hover-width: 18px, $color-hover: #81a3ca20 );
+                }
+            }
+
+            &.style-2{
+                @include article-meta-box-shadow( #a1b6bd, rgba(161, 182, 189, 0.35) );
+                div.article-meta-wordcloud.active {
+                    background-color: #a1b6bd20;
+                    @include box-shadow-inset-1( $hover-width: 18px, $color-hover: #a1b6bd20 );
+                }
+            }
+
+            &.style-3{
+                @include article-meta-box-shadow( #a1bdb9, rgba(161, 189, 185, 0.35) );
+                div.article-meta-wordcloud.active {
+                    background-color: #a1bdb920;
+                    @include box-shadow-inset-1( $hover-width: 18px, $color-hover: #a1bdb920 );
+                }
+            }
+
+            &.style-4{
+                @include article-meta-box-shadow( #bbbda1, rgba(187, 189, 161, 0.35) );
+                div.article-meta-wordcloud.active {
+                    background-color: #bbbda120;
+                    @include box-shadow-inset-1( $hover-width: 18px, $color-hover: #bbbda120 );
+                }
+            }
+
+            &.style-5{
+                @include article-meta-box-shadow( #bdafa1, rgba(189, 175, 161, 0.35) );
+                div.article-meta-wordcloud.active {
+                    background-color: #bdafa120;
+                    @include box-shadow-inset-1( $hover-width: 18px, $color-hover: #bdafa120 );
+                }
+            }           
+            
+            @media (max-width: $mediaquery-width-sm) { 
+                border-radius: 5px;
+            }
+    
+            
+            h3.title{
+                text-align: center;
+                &:active{
+                    @include scale(0.97);
+                }
+
+                a{
+                    text-align: center;
+                    color: $anchor-color;
+                    text-decoration: none;
+                    margin-bottom: 15px;
+                    @include transition(all, 0.1s, ease-in-out);
+                    &:hover{
+                        text-shadow:2px 2px 2px $anchor-color-hover;
+                        text-decoration: none;
+                    }
+
+                    &:active{
+                        color: $anchor-color-active;                        
+                    }
+                }
+            }
+        
+            div.article-meta-info{
+                color: $article_header-color;
+                fill: $article_header-color;
+                margin-top: 15px;
+                margin-bottom: 15px;
+
+                span.categories{
+                    margin-left: 10px;
+                    margin-right: 10px;
+                }
+
+                div.article-meta-info-main{
+        
+                    position: relative;
+        
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    
+                    width: fit-content;
+                    padding: $card-padding;
+                    margin: 0 auto;
+        
+                    @media (min-width: $mediaquery-width-sm) { 
+                        overflow: hidden;
+                    }
+                    
+        
+                    hr{
+                        width: 105%;
+                        margin-top: 1px;
+                        margin-bottom: 3px;
+                        position: absolute;
+                        &:first-child{
+                            top: 0px;
+                        }
+        
+                        &:last-child{
+                            bottom: 0px;
+                        }
+        
+                        @media (max-width: $mediaquery-width-sm) { 
+                            width: 90%;
+        
+                            &:last-child{
+                                bottom: -4px;
+                            }
+                        }
+                    }
+        
+                    li{
+                        list-style: none;
+                        height: inherit;
+                        padding-right: 5px;
+                        padding-left: 5px;
+                        
+                        &.datetime{
+                            position: relative;
+                            top: -3px;
+                            i.material-icons{
+                                position: relative;
+                                top: 5px;
+                            }
+        
+                            & span.datetime{
+                                margin-right: 5px; 
+                            }
+                        } 
+
+                        &.count{
+                            display: flex;
+                        }
+        
+                        &.category{
+                            position: relative;
+                            top: 2px;
+                        }
+                    }
+                }
+            }
+        }
+
+        
+    }
+}

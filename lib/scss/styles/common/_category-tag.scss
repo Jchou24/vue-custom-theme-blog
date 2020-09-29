@@ -1,0 +1,106 @@
+@mixin tags($size: 18px, $margin-top: -1px) {
+    span.tags{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        
+        & > *{
+            margin-top: 2px;
+            margin-bottom: 1px;
+        }
+
+        span.tag-item{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+                 box-sizing: border-box;
+            height: 25px;
+
+            border: 2px solid $tags-color-border;
+            background: $tags-background;
+            border-radius: 10px;
+            color: $tags-color;
+            padding: 2px 8px 6px 8px;
+            font-size: 12px;
+            line-height: 20px;
+            margin-left: 3px;
+            font-weight: 500;
+        
+            @include transition(all, 0.1s);
+            &:hover{
+                color: $tags-color-hover;
+                box-shadow: inset 0px 0px 4px 1px $tags-color-hover-box-shadow;
+                // @include box-shadow-inset-1( 1px, $tags-color-hover-box-shadow );
+                & .badge.badge-pill{
+                    opacity: 0.8;
+                    color: $tags-color-badge-hover;
+                }
+            }
+
+            &:active{
+                @include scale( 0.9 );
+            }
+
+            a{
+                color: inherit;
+                text-decoration: none;
+                position: relative;
+                top: -1px;
+            }
+
+            .badge.badge-pill{
+                padding: .1em .4em .1em .4em;
+                margin-right: -4px;
+                color: $tags-color-badge;
+                background: $tags-color-badge-background;
+                font-weight: initial;
+                font-size: 100%;
+                position: relative;
+                @include transition(all, 0.3s);
+            }
+        }
+        
+        svg-icon.tag svg{
+            height: $size;
+            width: $size;
+            margin-top: $margin-top;
+            margin-right: 2px;
+        }
+    }    
+}
+
+@mixin categories() {
+    span.categories{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        span.category-breadcrumb-item{
+            height: 27px;
+
+            &::before{
+                display: inline-block;
+                padding-left: 2px;
+                padding-right: 3px;
+                color: $categories-color;
+                content: "/";
+            }
+
+            &:nth-child(1)::before{
+                display: none;
+            }
+
+            a{
+                color: inherit;
+                text-decoration: none;
+                font-weight: 500;
+
+                @include transition(all, 0.15s);
+                &:hover{
+                    @include text-shadow-1( 2px, #cecece );
+                }
+            }
+        }
+    }    
+}
+
+

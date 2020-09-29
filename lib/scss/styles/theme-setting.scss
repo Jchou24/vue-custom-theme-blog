@@ -1,0 +1,161 @@
+@import "global-var";
+
+// =================================================================================
+// media-query setting
+// =================================================================================
+$mediaquery-width-sm: 576px;
+$mediaquery-width-md: 768px;
+$mediaquery-width-l: 992px;
+$mediaquery-width-xl: 1200px;
+
+// =================================================================================
+// anchor setting
+// =================================================================================
+$anchor-color: #0366d6;
+$anchor-color-hover: #9bb4e0;
+$anchor-color-active: #123456;
+
+// =================================================================================
+// card setting
+// =================================================================================
+$card-border-width: 3px;
+$card-border-radius: 15px;
+$card-margin-bottom: 20px;
+$card-padding: 5px;
+
+// =================================================================================
+// blueprint setting
+// =================================================================================
+$blueprint-color: #fff;
+$blueprint-background: #269;
+$blueprint-background-hover: #9bb4e0;
+$blueprint-background-light: #4e7ac7;
+$blueprint-color-border: white;
+
+// =================================================================================
+// tags setting
+// =================================================================================
+$tags-color-border: #b1bbce;
+$tags-color: #727986;
+$tags-color-hover: #727986;
+$tags-color-hover-box-shadow: $tags-color-border;
+$tags-color-badge: #525761;
+$tags-color-badge-hover: $tags-color-badge;
+$tags-color-badge-background: #ccd4e4;
+$tags-background: none;
+
+// =================================================================================
+// categories setting
+// =================================================================================
+$categories-color: #6c757d;
+
+// =================================================================================
+// header setting
+// =================================================================================
+$header-color-border: $color-border-light;
+$header-background: $head;
+
+$header_nav-height: 59px;
+$header_nav_hidden-height: calc( #{$header_nav-height} + 10px );
+$header_nav-width: 5px;
+
+$reading_progress-height: 10px;
+$reading_progress-color-background: #369;
+
+// =================================================================================
+// sidebar setting
+// =================================================================================
+$sidebar_icon-color: $color-border-heavy;
+$sidebar_icon-color-border: $color-border-heavy;
+$sidebar_icon-color-border-xs: $color-border-heavy-xs;
+$sidebar_icon-background: $background-item;
+$sidebar_icon-background-hover: $background;
+
+$sidebar-item-color-border: $color-border-light;
+$sidebar-item-color-border-xs: $color-border-light-xs;
+$sidebar-item-background: $background-item;
+// $sidebar-item-background-hover: $background;
+$sidebar-item-background-hover: map-get($imgs-medium, xv);
+
+$sidebar-item-header-color: $word-color-light;
+$sidebar-item-header-color-border: $color-border-light;
+$sidebar-item-header-color-border-xs: $color-border-light-xs;
+$sidebar-item-header-background: $head;
+$sidebar-item-header-background-xs: $color-border-heavy-xs;
+
+// =================================================================================
+// sidebar filter
+// =================================================================================
+$sidebar_filter_tag-color: #4a6686;
+$sidebar_filter_tag-color-background: #c1d4ec;
+$sidebar_filter_tag-color-hover: #4a6686;
+$sidebar_filter_tag-color-background-hover: #e1e6ed;
+
+// =================================================================================
+// toc setting
+// =================================================================================
+$toc-color-active: $word-color-light;
+$toc-color-hover: $color-background-item;
+$toc-color-border: $word-color-light;
+$toc-color-box-shadow-hover: $word-color-light;
+$toc-background-active: $head;
+$toc-background-active-xs: $color-border-heavy-xs;
+$toc-background-hover: $head;
+
+// =================================================================================
+// recent post setting
+// =================================================================================
+$recent_post-color-icon: $color-border-heavy;
+$recent_post-color-icon-active: $color-border-light;
+
+// =================================================================================
+// main content setting
+// =================================================================================
+$main_content-color-border-light: #e0e0e0;
+$article_header-background: map-get($imgs-medium, xv_light_blue);
+// $article_header-background: map-get($imgs-medium, xv);
+$article_header-color: #496586;
+
+// =================================================================================
+// folder icon & article icon setting
+// =================================================================================
+// $folder_icon_color: $color-border-heavy;
+$folder_icon_color: #1e4c5e;
+$article_icon_color: #527096;
+
+// =================================================================================
+// splitor setting
+// =================================================================================
+$splitor-color-background: $color-border-heavy;
+
+
+
+
+
+
+// =================================================================================
+// temp template
+// =================================================================================
+@media (max-width: $mediaquery-width-sm) { 
+
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: $mediaquery-width-sm) and (max-width: $mediaquery-width-md) { 
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: $mediaquery-width-md) and (max-width: $mediaquery-width-l) { 
+   
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: $mediaquery-width-l) and (max-width: $mediaquery-width-xl) { 
+    
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: $mediaquery-width-xl) { 
+
+}

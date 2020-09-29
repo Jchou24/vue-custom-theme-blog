@@ -1,0 +1,79 @@
+@import "styles/global-var";
+@import "styles/theme-setting";
+
+// for common
+@import "styles/common/_scroller";
+@import "styles/common/_toc";
+@import "styles/common/_category-tag";
+@import "styles/common/_fix_vue_select";
+
+// for common article
+@import "styles/common/article/_article";
+@import "styles/common/article/_blueprint";
+@import "styles/common/article/_markdown";
+@import "styles/common/article/_container";
+
+// for common layout
+@import "styles/common/layout/_layout";
+@import "styles/common/layout/_main-content";
+
+// for common search
+@import "styles/common/search/_sidebar_filter";
+@import "styles/common/search/_article-meta-list";
+
+// for common navbar
+@import "styles/common/navbar/_nav-header";
+
+// for common sidebar
+@import "styles/common/sidebar/_sidebar";
+@import "styles/common/sidebar/_sidebar-article-block";
+@import "styles/common/sidebar/_sidebar-recent-post";
+@import "styles/common/sidebar/_article-lists";
+
+@import "styles/common/fix";
+
+// for common footer
+// @import "styles/common/footer/_footer";
+
+// for page article
+// @import "styles/page/article/_splitor";
+
+
+@include layout();
+@include scroller();
+
+@include nav-header();
+
+@include toc();
+@include sidebar-article-block();
+@include sidebar-recent-post();
+@include sidebar-filter();
+@include article-lists();
+@include article-meta-list();
+
+@include main-content-other();
+@include article();
+@include tags();
+@include categories();
+@include blueprint();
+@include markdown();
+@include container();
+@include fix-vue-select();
+
+// @include footer();
+
+// for page article
+// @include splitor();
+
+// =================================================================================
+// for category page, tag page
+// =================================================================================
+@import "styles/page/category/_category-bar-viewer";
+@import "styles/page/category/_category-viewer";
+
+@include category-bar-viewer();
+@include category-viewer();
+// =================================================================================
+
+
+

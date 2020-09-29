@@ -1,0 +1,399 @@
+
+// =================================================================================
+// sidebar active
+// =================================================================================
+
+@mixin sidebar-active-display($margin, $width-sidebar, $width-sidebar-icons, $display-batch-icons: false){
+    div.sidebar{
+        // transition: all 0.3s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+        @include transition(all, 0.3s, cubic-bezier(0.945, 0.020, 0.270, 0.665));
+        opacity: 0;
+        visibility: hidden;
+        transform: rotateY(100deg); /* Rotate sidebar vertically by 100 degrees. */
+
+        &.active-display {
+            opacity: 1;
+            visibility: visible;
+            transform: rotateY(0deg); /* Rotate sidebar vertically by 100 degrees. */
+            margin-left: 0px;
+        }
+
+        @media (max-width: $mediaquery-width-sm) { 
+            z-index: 9999;
+            // background: rgba(0, 0, 0, 0.0);
+
+            // &.active-display {
+            //     background: rgba(0, 0, 0, 0.4);
+            // }
+        }
+
+        margin-left: calc( -1 * ( #{$margin} * 2 + #{$width-sidebar} ) );
+        
+        // Extra large devices (large desktops, 1200px and up)
+        @media (min-width: $mediaquery-width-xl) { 
+            @if $display-batch-icons {
+                margin-left: calc( -1 * ( #{$margin} * 4 + #{$width-sidebar} + #{$width-sidebar-icons} ) );    
+            }
+        }
+    }
+}
+
+// =================================================================================
+// sidebar icon
+// =================================================================================
+
+@mixin sidebar-icons(){
+    .sidebar-icon-circle{
+        cursor: pointer;
+        position: relative;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 5px solid $sidebar_icon-color-border;
+        box-shadow: 0px 0px 3px 3px rgba(128,128,153,0.35) inset;
+        @media (max-width: $mediaquery-width-sm) {
+            border: 5px solid $sidebar_icon-color-border-xs;
+        }
+
+        .sidebar-icon{
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            width: 25px;
+            height:28px;
+
+            svg.category-icon{
+                position: absolute;
+                left: 1px;
+                top: 1px;
+            }
+        }
+
+        &.waterfall-controll-icon{
+            i.material-icons{
+                font-weight: 900;
+            }
+        }
+    }
+}
+
+@mixin sidebar-icons-hover(){
+    .sidebar-icon-circle{
+        opacity: 0.9;
+        @include transition(all, 0.2s, ease-in-out);
+        .sidebar-icon{
+            fill: $sidebar_icon-color;
+            color: $sidebar_icon-color;
+            i.material-icons,
+            svg{
+                @include transition(all, 0.1s, ease-in-out);
+            } 
+        }
+        
+        &:hover{
+            opacity: 1.0;
+            @include transition(all, 0.3s, ease-in-out);
+            @include box-shadow-inset-1( 5px, $color-border-light );
+            .sidebar-icon{
+                i.material-icons,
+                svg{
+                    @include scale( 1.2 );
+                }                    
+            }
+        }
+
+        &:active{
+            opacity: 1.0;
+            @include transition(all, 0.1s, ease-in-out);
+            @include box-shadow-inset-1( 10px, $color-border-light );
+                .sidebar-icon{
+                    i.material-icons,
+                    svg{
+                        @include scale( 1.1 );
+                    }                    
+                }
+        }
+
+        &.disactive{
+            opacity: 0.6;
+            &:hover{
+                opacity: 1.0;
+            }
+            transform: rotateZ( 180deg );
+        }
+
+        @media (max-width: $mediaquery-width-sm) { 
+            opacity: 1.0;
+            background: $sidebar_icon-background;
+
+            &:hover{
+                opacity: 1.0;
+                background: $sidebar_icon-background-hover;
+            }
+        }
+    }
+}
+
+// =================================================================================
+// sidebar content
+// =================================================================================
+
+@mixin sidebar-content($width-sidebar, $is-xs-display-sidebar-icons:true){
+    aside.sidebar-content{
+        width: $width-sidebar;
+        position: relative;
+
+        // div.ps__thumb-y{
+        //     visibility: hidden;
+        // }
+        // div.ps__rail-y{
+        //     visibility: hidden;
+        // }
+
+        a{
+            color: inherit;
+            text-decoration: none;
+            display: block;
+        }
+
+        div.sidebar-item{
+            // position: -webkit-sticky;
+            // position: sticky;
+            // top: 0px;
+            margin-bottom: $card-margin-bottom;
+            background: $sidebar-item-background;
+            border-radius: $card-border-radius;
+            opacity: 0.9;
+
+            @include transition(opacity, 0.2s, ease-in-out);
+            &:hover{
+                opacity: 1.0;
+            }
+
+            header{
+                text-align: center;
+                i.material-icons{
+                    position: relative;
+                    top: 6px;
+                    font-size: 32px;
+                }
+
+                svg.category-icon{
+                    fill: $sidebar-item-header-color;
+                    width: 28px;
+                    height: 28px;
+                    position: relative;
+                    top: -3px;
+                    left: 4px;
+                }
+
+                svg.filter-icon{
+                    width: 21px;
+                    height: 21px;
+                    position: relative;
+                    top: -3px;
+                    left: 3px;
+                    fill: $sidebar-item-header-color;
+                }
+
+                color: $sidebar-item-header-color;
+                background: $sidebar-item-header-background;
+                border: $card-border-width solid $sidebar-item-header-color-border;
+                border-top-left-radius: $card-border-radius;
+                border-top-right-radius: $card-border-radius;
+                // border-bottom: none;
+                padding: $card-padding;
+            }
+
+            li.sidebar-li-item{
+                border: $card-border-width solid $sidebar-item-color-border;
+                border-top: none;
+                padding: $card-padding;
+                list-style: none;
+
+                @include transition(all, 0.2s, ease-in-out);
+                
+                &:last-child{
+                    border-bottom-left-radius: $card-border-radius;
+                    border-bottom-right-radius: $card-border-radius;
+                }
+
+                &:hover{
+                    background: $sidebar-item-background-hover;
+                    @include box-shadow-inset-1(2px, $sidebar-item-color-border);
+                }
+
+                &:active{
+                    @include box-shadow-inset-1(10px, $sidebar-item-color-border);
+                }
+
+                svg-icon{
+                    fill: $sidebar_icon-color;
+                    svg{
+                        height: 15px;
+                        width: 15px;
+                        margin-right: 4px;
+                        margin-top: -4px;
+                    }        
+                }
+
+                a div{
+                    &:nth-child(3){
+                        position: relative;
+                        // top: -5px;
+                    }
+                    i.material-icons{
+                        position: relative;
+                        top: 6px;
+                        // left: -2px;
+                    }
+                }
+            }
+        }
+
+        @media (max-width: $mediaquery-width-sm) { 
+            width: calc( #{$width-sidebar} - 20px );
+            @if $is-xs-display-sidebar-icons {
+                height: calc( 100vh - 60px - #{$header_nav-height} );
+            }@else{
+                height: calc( 100vh - #{$header_nav-height} );
+            }
+
+            margin: 10px;
+            div.sidebar-item{
+                opacity: 1.0;
+
+                header{
+                    background: $sidebar-item-header-background-xs;
+                    border-color: $sidebar-item-header-color-border;
+                }
+    
+                li{
+                    border-color: $sidebar-item-color-border-xs;
+    
+                    &:hover{
+                        background: $sidebar-item-background-hover;
+                    }
+                    
+                    &.sidebar-li-item{
+                        overflow: auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// =================================================================================
+// x-small
+// =================================================================================
+
+@mixin sidebar-xs($margin, $width-sidebar, $is-xs-display-sidebar-icons: true) {
+    div.sidebar{   
+        width: $width-sidebar;
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        > * {
+            margin: $margin;
+        }  
+        @include sidebar-icons-l($width-sidebar, 10px);    
+        @include sidebar-content($width-sidebar, $is-xs-display-sidebar-icons);    
+    }
+    @include sidebar-active-display($margin, $width-sidebar, 0px);
+    @include sidebar-icons-hover();
+}
+
+// =================================================================================
+// large
+// =================================================================================
+
+@mixin sidebar-icons-l($width-sidebar-icons, $margin-top: 5px) {
+    aside.sidebar-icons{
+        display: flex;
+        width: $width-sidebar-icons;
+        @include sidebar-icons();
+    }
+    aside.sidebar-icons{
+        min-height: 50px;
+        margin-top: $margin-top;
+        flex-direction: row;
+        justify-content: space-around;
+    }    
+}
+
+@mixin sidebar-l($margin, $width-sidebar, $is-xs-display-sidebar-icons: true) {
+    div.sidebar{
+        // fix width too long problem in xs scrren of browser
+        @media (max-width: $mediaquery-width-sm) { 
+            width: $width-sidebar;
+        }       
+
+        display: flex;
+        flex-direction: column;
+        > * {
+            margin: $margin;
+            margin-left: calc( #{$margin} + 5px );
+            @media (min-width: $mediaquery-width-l){ 
+                margin-left: 0px;
+            }
+        }  
+        @include sidebar-icons-l($width-sidebar, $margin);    
+        @include sidebar-content($width-sidebar, $is-xs-display-sidebar-icons);    
+    }
+    @include sidebar-active-display($margin, $width-sidebar, 0px);
+    @include sidebar-icons-hover();
+}
+
+// =================================================================================
+// x-large
+// =================================================================================
+
+@mixin sidebar-icons-xl($width-sidebar-icons, $direction: column) {
+    aside.sidebar-icons{
+        display: flex;
+        width: $width-sidebar-icons;
+        @include sidebar-icons();
+    }
+    aside.sidebar-icons{
+        flex-direction: $direction;
+        justify-content: initial;
+
+        a.sidebar-icon-circle{
+            margin-bottom: 10px;
+            color: inherit;
+    
+            div.sidebar-icon{
+                fill: $sidebar_icon-color;
+            }
+        }
+    }
+}
+
+@mixin sidebar-xl($margin, $width-sidebar-icons, $width-sidebar, $display-batch-icons: false, $reverse-display-batch-icons: true, $is-xs-display-sidebar-icons: true) {
+    div.sidebar{
+        display: flex;        
+
+        > * {
+            margin-top: $margin;
+            margin-bottom: $margin;
+        } 
+
+        @include sidebar-content($width-sidebar, $is-xs-display-sidebar-icons);    
+
+        @if $display-batch-icons {
+            // To display a lot of sidebar-cons
+            @if $reverse-display-batch-icons {
+                flex-direction: row-reverse;
+            }@else{
+                flex-direction: row;
+            }
+            @include sidebar-icons-xl($width-sidebar-icons, column);      
+        }@else{    
+            flex-direction: column;
+            @include sidebar-icons-l($width-sidebar, $margin);    
+        }
+    }  
+    @include sidebar-active-display($margin, $width-sidebar, $width-sidebar-icons, $display-batch-icons);
+    @include sidebar-icons-hover();
+}

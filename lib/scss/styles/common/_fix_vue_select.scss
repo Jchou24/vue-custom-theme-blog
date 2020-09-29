@@ -1,0 +1,15 @@
+@mixin fix-vue-select(){
+    .vue-treeselect__menu,
+    .vue-treeselect__menu-container{
+        position: relative !important;
+    }
+
+    // fix mobile size scroll affect
+    @media (max-device-width: $mediaquery-width-xl) { 
+        .vue-treeselect__menu,
+        .multiselect__content-wrapper,
+        .multiselect__content{
+            overflow: auto !important;
+        }
+    }
+}

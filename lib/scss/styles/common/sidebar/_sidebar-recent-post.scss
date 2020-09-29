@@ -1,0 +1,49 @@
+@mixin sidebar-recent-post() {
+    $text-shadow-color-hover: #a2b6bb;
+    div.sidebar-recent-post{
+        li.control-menu{
+            display: flex;
+            justify-content: center;
+
+            & > i.material-icons{
+                cursor: pointer;
+                position: relative;
+                font-weight: 900;
+                @include transition( text-shadow, 0.1s );
+
+                &:hover{
+                    @include text-shadow-1(4px, $text-shadow-color-hover);
+                }
+
+                &:active{
+                    @include text-shadow-1(4px, $text-shadow-color-hover);
+                    @include scale(0.9);       
+                    top: 7.5px;             
+                }
+
+                &.arrow{
+                    height: 0px;
+                    top: 6px;
+                }
+
+                &.toggle{
+                    right: 10px;
+                    position: absolute;
+                    top: 11px;
+                }
+            }
+
+            &:active{
+                $box-shadow-width: 2px;
+                box-shadow: 
+                    inset 0px 0px $box-shadow-width $sidebar-item-color-border, 
+                    inset 0px 0px $box-shadow-width $sidebar-item-color-border, 
+                    inset 0px 0px $box-shadow-width $sidebar-item-color-border, 
+                    inset 0px 0px $box-shadow-width $sidebar-item-color-border, 
+                    inset 0px 0px $box-shadow-width $sidebar-item-color-border, 
+                    inset 0px 0px $box-shadow-width $sidebar-item-color-border, 
+                    inset 0px 0px $box-shadow-width $sidebar-item-color-border !important;
+            }
+        }
+    }
+}

@@ -1,0 +1,56 @@
+@mixin toc() {
+    div.toc{
+    
+        li{
+        
+            a{
+                border-left-width: 8px;
+                border-left-color: rgba(0, 0, 0, 0);
+                border-left-style: solid;
+                padding-left: 4px;
+            }
+            
+            &.active{   
+                background: $toc-background-active;
+                // background: $red;
+                color: $toc-color-active;
+                @media (max-width: $mediaquery-width-sm) { 
+                    background: $toc-background-active-xs;
+                }    
+    
+                &:hover{
+                    box-shadow: inset 0px 0px 5px 3px $toc-color-box-shadow-hover;
+                    background: $toc-background-hover !important;
+                    color: $toc-color-hover !important;
+                }
+    
+                a{
+                    border-left-width: 8px;
+                    border-left-color: $toc-color-border;
+                    border-left-style: solid;      
+                }
+            }
+        }
+        
+    
+        .toc-h2{
+            padding-left: 20px !important;
+        }
+    
+        .toc-h3{
+            padding-left: 40px !important;
+        }
+    
+        .toc-h4{
+            padding-left: 60px !important;
+        }
+    
+        .toc-h5{
+            padding-left: 60px !important;
+        }
+    
+        .toc-h6{
+            padding-left: 60px !important;
+        }
+    } 
+}

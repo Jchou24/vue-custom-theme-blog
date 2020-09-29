@@ -1,0 +1,190 @@
+
+@mixin nav-header() {
+    // =================================================================================
+    // navigation bar sm size
+    // =================================================================================    
+    @media (max-width: $mediaquery-width-sm) { 
+        div.hidden-nav-header{
+            height: $header_nav_hidden-height;
+            &.active-search{
+                height: $header_nav_hidden-height !important;
+            }
+            display: block;
+        }
+    }
+    // =================================================================================
+    // a hover
+    // =================================================================================
+    nav.nav-header{
+        // background: $background;
+        
+        a.navbar-brand{
+            &:hover, &.active{
+                color: #eeeeee;
+                @include text-shadow-1( 8px, #7c7c7c  );
+
+                svg{
+                    fill: #eeeeee !important;
+                    filter: drop-shadow(1px 0px 6px #c0c0c0);
+                }
+            }
+
+            &.active{
+                @include transition(transform, 0.1);
+                @include scale(1.3);
+                @include text-shadow-1( 20px, #7c7c7c  );
+            }
+
+            &:active{
+                color: #c1c1c1;
+                @include scale(0.9);
+                @include text-shadow-1( 5px, #7c7c7c  );
+
+                svg{
+                    fill: #c1c1c1 !important;
+                    filter: drop-shadow(1px 0px 6px #c0c0c0);
+                }
+            }
+        }
+
+        button.navbar-toggler{
+            &:hover{
+                @include box-shadow-1( 8px, #7c7c7c  );
+            }
+
+            &:active{
+                @include box-shadow-1( 5px, #7c7c7c  );
+            }
+        }
+
+    }
+    // =================================================================================
+    // navigation bar
+    // =================================================================================
+    nav.nav-header{
+        position: fixed;
+        top: 0px;
+        z-index: 9999;
+        margin-top: calc( #{$header_nav-height} * -1 );
+        &.active-display{
+            margin-top: 0px; 
+        }
+        &.hidden{
+            margin-top: calc( #{$header_nav-height} * -1 - 10px );
+        }
+        width: 100%;
+        @include transition(all, 0.3s, ease-in-out);
+
+        @media (min-width: $mediaquery-width-xl) {             
+            // @include transition(width, 0.3s, ease-in-out);
+            
+            &.active-displayer{
+                // margin-left: 10px;
+                // margin-right: 10px;
+                // width: calc( 100vw - 20px );
+            }        
+        }       
+
+        .view-container{
+            background: $background;
+        }
+
+        &.full-page .view-container{
+            background: unset;
+        }
+    
+        nav.navbar.navbar-dark{
+            @media (min-width: $mediaquery-width-sm){
+                border-bottom: $header_nav-width solid $header-color-border;
+            } 
+    
+            @media (min-width: $mediaquery-width-l){ 
+                border-radius: 10px;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+                border: $header_nav-width solid $header-color-border;
+                border-top: 3px solid $header-color-border;
+            }
+    
+            @media (max-width: $mediaquery-width-md) { 
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+    
+            // Both part
+            height: $header_nav-height;
+            background: $header-background;  
+            box-shadow: 
+                -2px 3px 5px 0px rgba(128,128,153,0.35) inset, 
+                -2px -5px 10px 0px rgba(128,128,153,0.35) inset;
+
+
+//             background-image   : url(https://mdn.mozillademos.org/files/11305/firefox.png),
+//                        url(https://mdn.mozillademos.org/files/11307/bubbles.png),
+//                        linear-gradient(to bottom, rgba(30, 75, 115, 1),  rgba(255, 255, 255, 0));
+//             background-repeat  : no-repeat,
+//                        no-repeat,
+//                        no-repeat;
+
+//   background-position: bottom right,
+//                        left,
+//                        right;
+    
+            .navbar-item{
+                float: right;
+            }
+    
+            i.material-icons{
+                position: relative;
+                top: 4px;
+            }
+            
+            // Left part
+            div.left-items{
+                display: flex!important;
+                button.navbar-toggler{
+                    margin-right: 15px;
+                }
+            }        
+    
+            // Right part
+            div.right-items{
+                border: 0px;
+            
+                svg{
+                    fill: white;
+                    height: 24px;
+                    width: 24px;
+                    margin-right: 3px;
+    
+                    @media (min-width: $mediaquery-width-sm){
+                        margin-bottom: 0px;
+                    }
+                }
+    
+                // svg-icon.tag svg{
+                svg.tag-icon{
+                    margin-bottom: 2px;
+                    margin-right: 1px;
+                }
+    
+                // svg-icon.category svg{
+                svg.category-icon{
+                    margin-bottom: 4px;
+                    margin-left: 2px;
+                    margin-right: 2px;
+                    @media (min-width: $mediaquery-width-md){
+                        margin-right: 3px;
+                    }
+                }            
+            }
+            @media (max-width: 360px) {
+                div.right-items{
+                    a {
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
