@@ -40,12 +40,17 @@
             content: "";
             position: absolute;
             top: 0; left: 0;
-            width: 100vw; height: 100%;
+            width: 100%; 
+            height: 100%;
             background: radial-gradient(circle, #ffffff00 60%, #326094), url("~@theme/img/blue-block.jpg") no-repeat center;
             background-attachment: fixed;
             background-size: cover;
             filter: blur(2px) brightness(85%);
-        }        
+        }       
+
+        &.mobile::before{
+            background-attachment: scroll;
+        }
 
         flex-direction: column;
         padding-top: 70px;

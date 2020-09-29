@@ -56,11 +56,17 @@
             content: "";
             position: absolute;
             top: 0; left: 0;
-            width: 100vw; height: 100%;
+            width: 100%; 
+            height: 100%;
             background: url("~@theme/img/background-coding.jpg") no-repeat center;
             background-attachment: fixed;
+            background-size: cover;
             filter: blur(5px) brightness(60%);
         }        
+
+        &.mobile::before{
+            background-attachment: scroll;
+        }   
 
         flex-direction: column;
 

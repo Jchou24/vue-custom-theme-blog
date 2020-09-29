@@ -1,6 +1,8 @@
 <template>    
     <div class="ImgSection">
-        <FlipCircle class="flip-circle"/>
+        <div class="circle-wrapper">
+            <FlipCircle class="flip-circle"/>
+        </div>
 
         <div class="poly-img" scroll-out="fadeInDown" scroll-out-delay="0" >
             <PolyImg class="poly-img-ele" imgClass="picture" :polyStyle="1" :scale="1.2" />
@@ -63,16 +65,18 @@
     // ==========================================================================================
     // flip-circle
 
-    .flip-circle{        
+    .circle-wrapper{        
         position: absolute;
 
         @media (max-width: 956px) {
-            position: relative;
-            left: 0; 
-            right: 0; 
-            margin-left: auto; 
-            margin-right: auto; 
-            background: rgba(245, 245, 245, 0.8);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+
+            .flip-circle{
+                background: rgba(245, 245, 245, 0.8);
+            }
         }
     }
     

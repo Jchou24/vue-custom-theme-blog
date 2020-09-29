@@ -1,6 +1,6 @@
 <template>    
     <ViewSection class="AboutPageLast">
-        <video class="bg-video" autoplay muted loop>
+        <video class="bg-video" defaultMuted autoplay muted loop playsinline>
             <source src="~@theme/img/bg-video-1.mp4" type="video/mp4">
             Your browser does not support HTML5 video.
         </video>

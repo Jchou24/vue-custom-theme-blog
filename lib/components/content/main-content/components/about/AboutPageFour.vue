@@ -74,12 +74,17 @@
             content: "";
             position: absolute;
             top: 0; left: 0;
-            width: 100vw; height: 100%;
+            width: 100%; 
+            height: 100%;
             background: url("~@theme/img/background-sky.jpg") no-repeat center;
             background-attachment: fixed;
             background-size: cover;
             filter: blur(2px) brightness(90%);
-        }        
+        }
+        
+        &.mobile::before{
+            background-attachment: scroll;
+        }
 
         flex-direction: column;
         padding-top: 70px;

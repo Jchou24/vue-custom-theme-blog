@@ -1,13 +1,28 @@
 <template>
-    <div class="ViewSection">
+    <div class="ViewSection" :class="cls" >
         <slot></slot>
     </div>
 </template>
 
 <script>
+    import { check_is_mobile } from '@theme/js/utility.js'
 
     export default {
         name: "ViewSection",
+        computed:{
+            cls:{
+                get(){
+                    return {
+                        mobile: this.is_mobile()
+                    }
+                }
+            },
+        },
+        methods:{
+            is_mobile(){
+                return check_is_mobile()
+            },
+        },
     }
 </script>
 

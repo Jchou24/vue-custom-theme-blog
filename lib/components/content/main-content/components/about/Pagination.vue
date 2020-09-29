@@ -99,7 +99,7 @@
             margin-left: auto; 
             margin-right: auto; 
 
-            width: fit-content;
+            width: 30px;
         }
     }
 
