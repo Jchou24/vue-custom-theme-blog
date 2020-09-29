@@ -1,6 +1,6 @@
 <template>
-    <BaseLink to="/about/" title="About" icon="info" class="left-item d-none d-sm-none d-md-block" v-if="!is_sm_size" />
-    <BaseLink to="/about/" icon="info" class="d-sm-block d-md-none" v-else />
+    <BaseLink to="/About/" title="About" icon="info" class="left-item d-none d-sm-none d-md-block" v-if="!is_sm_size" />
+    <BaseLink to="/About/" icon="info" class="d-sm-block d-md-none" v-else />
 </template>
 
 <script>
