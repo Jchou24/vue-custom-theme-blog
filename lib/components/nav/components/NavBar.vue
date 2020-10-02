@@ -3,7 +3,7 @@
         <BContainer>
     
             <div class="left-items">
-                <NavbarToggler />
+                <NavbarToggler :is_disabled="is_full_page" />
                 <LinkHome />
                 <LinkAbout v-if="is_about_page_exists()" />
             </div>
@@ -51,7 +51,10 @@
             LinkSearch,
         },
         props:{
-            
+            is_full_page:{ // to control whether the layout is one column full screen
+                type: Boolean,
+                default: false,
+            },
         },
         data: function(){
             return {

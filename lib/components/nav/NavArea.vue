@@ -10,7 +10,7 @@
 
         <div class="view-container">
         
-            <NavBar />
+            <NavBar :is_full_page="is_full_page"/>
 
             <!-- for category page -->
             <!-- For xs size -->
